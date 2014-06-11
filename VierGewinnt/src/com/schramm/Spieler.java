@@ -4,7 +4,7 @@ public class Spieler {
 	
 	public static final String COMPUTER = "Computer";
 	private String name;
-	private String steinfarbe;
+	private Stein steinfarbe;
 	
 	public String getName() {
 		return name;
@@ -14,11 +14,11 @@ public class Spieler {
 		this.name = name;
 	}
 	
-	public String getSteinfarbe() {
+	public Stein getSteinfarbe() {
 		return steinfarbe;
 	}
 	
-	public void setSteinfarbe(String steinfarbe) {
+	public void setSteinfarbe(Stein steinfarbe) {
 		this.steinfarbe = steinfarbe;
 	}
 	public boolean isComputer(){
