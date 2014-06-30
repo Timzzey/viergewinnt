@@ -29,33 +29,50 @@ public class SpielTest {
 	}
 	
 	@Test
-	public void nurEinSpielerSetztInEineSpalteUndHatNachVierZuegenGewonnen() {
+	public void nurEinSpielerSetztInEineSpalteUndHatNachVierZuegenGewonnen() throws Exception {
 		spiel.steinSetzen(spieler1, 1);
 		assertFalse(spiel.hatGewonnen(spieler1));
+		
+		spiel.steinSetzen(spieler2, 2);
 		spiel.steinSetzen(spieler1, 1);
 		assertFalse(spiel.hatGewonnen(spieler1));
+		
+		spiel.steinSetzen(spieler2, 2);
 		spiel.steinSetzen(spieler1, 1);
 		assertFalse(spiel.hatGewonnen(spieler1));
+		
+		spiel.steinSetzen(spieler2, 2);
 		spiel.steinSetzen(spieler1, 1);
 		assertTrue(spiel.hatGewonnen(spieler1));
 	}
 	
 	@Test
-	public void zweiSpielerSetzenInEineSpalteUndSpielerEinsGewinnt() {
+	public void zweiSpielerSetzenInEineSpalteUndSpielerEinsGewinntWeilSpielerZweiInEineAndereSpalteSetzt() throws Exception {
 		spiel.steinSetzen(spieler1, 1);
 		assertFalse(spiel.hatGewonnen(spieler1));
-		
 		spiel.steinSetzen(spieler2, 1);
-		assertFalse(spiel.hatGewonnen(spieler1));
 		
 		spiel.steinSetzen(spieler1, 1);
 		assertFalse(spiel.hatGewonnen(spieler1));
+		spiel.steinSetzen(spieler2, 2);
+		
 		spiel.steinSetzen(spieler1, 1);
 		assertFalse(spiel.hatGewonnen(spieler1));
+		spiel.steinSetzen(spieler2, 2);
+		
 		spiel.steinSetzen(spieler1, 1);
 		assertFalse(spiel.hatGewonnen(spieler1));
+		spiel.steinSetzen(spieler2, 2);
+		
 		spiel.steinSetzen(spieler1, 1);
 		assertTrue(spiel.hatGewonnen(spieler1));
 	
 	}
+
+	@Test(expected=DuplicateMoveException.class)
+	public void einSpielerKannNichtZweimalHintereinanderSetzen() throws Exception {
+		spiel.steinSetzen(spieler1, 1);
+		spiel.steinSetzen(spieler1, 2);
+	}
+
 }
